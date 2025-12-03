@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # --- PEDIR DATOS ---
-read -p "Ingrese el TOKEN de Telegram: " BOT_TOKEN
-read -p "Ingrese su ID de administrador: " ADMIN_ID
-read -p "Ingrese el dominio para HTTPS (ej: midominio.com): " DOMAIN
+read -p "Ingrese su TOKEN de Telegram: " BOT_TOKEN
+read -p "Ingrese su ID de Telegram: " ADMIN_ID
+read -p "Ingrese su dominio para HTTPS (ej: midominio.com): " DOMAIN
 EMAIL_ADMIN="admin@$DOMAIN"
 
 # --- DIRECTORIOS ---
@@ -107,11 +107,11 @@ async def boton_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         url = f"https://{DOMAIN}/json/{file_name}"
         keyboard = [
             [InlineKeyboardButton("📄 Ver contenido", callback_data=f"ver|{file_name}")],
-            [InlineKeyboardButton("⬇ Descargar JSON", url=url)],
+            [InlineKeyboardButton("⬇ Link JSON", url=url)],
             [InlineKeyboardButton("➕ Agregar clave", callback_data=f"agregar|{file_name}")],
             [InlineKeyboardButton("✏️ Modificar clave", callback_data=f"modificar|{file_name}")],
             [InlineKeyboardButton("🗑 Borrar clave", callback_data=f"borrar|{file_name}")],
-            [InlineKeyboardButton("⬆ Subir reemplazo", callback_data=f"subir|{file_name}")],
+            [InlineKeyboardButton("⬆ Actualizr JSON", callback_data=f"subir|{file_name}")],
             [InlineKeyboardButton("⬅ Regresar", callback_data="menu|")]
         ]
         await query.edit_message_text(f"📁 Archivo seleccionado: {file_name}", reply_markup=InlineKeyboardMarkup(keyboard))
